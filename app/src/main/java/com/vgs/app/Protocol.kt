@@ -17,7 +17,7 @@ import java.util.UUID
  */
 object Protocol {
     val SERVICE_UUID: UUID = UUID.fromString("7a1e5d2c-3b4f-4c8a-9e61-2f5d8c0b9a41")
-    const val SERVICE_NAME = "VGS"
+    const val SERVICE_NAME = "CallCompanion"
     const val TYPE_CMD = 1
     const val TYPE_AUDIO = 2
     const val MAX_FRAME = 64 * 1024
@@ -60,7 +60,7 @@ object Hub {
     private val fmt = SimpleDateFormat("HH:mm:ss", Locale.US)
 
     fun log(msg: String) {
-        android.util.Log.i("VGS", msg)
+        android.util.Log.i("CallCompanion", msg)
         synchronized(lines) {
             lines.addLast(fmt.format(Date()) + "  " + msg)
             while (lines.size > 60) lines.removeFirst()
