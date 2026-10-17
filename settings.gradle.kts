@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "VGS"
+rootProject.name = "CallCompanion"
 include(":app")
