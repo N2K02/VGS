@@ -1,6 +1,8 @@
 name: Build APK
 
 on:
+  push:
+    branches: [ main ]
   workflow_dispatch:
     inputs:
       version:
@@ -17,7 +19,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  APP: VGS
+  APP: CallCompanion
 
 jobs:
   build:
