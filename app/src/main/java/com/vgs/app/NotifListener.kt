@@ -69,7 +69,7 @@ class NotifListener : NotificationListenerService() {
     override fun onNotificationPosted(sbn: StatusBarNotification) {
         if (sbn.packageName == packageName) return
         if (AppCalls.isCall(sbn)) { // WhatsApp call: ringing / active
-            val svc = Hub.service?.takeIf { it.isActive } ?: return // VGS stopped: ignore
+            val svc = Hub.service?.takeIf { it.isActive } ?: return // CallCompanion stopped: ignore
             val call = AppCalls.parse(sbn) ?: return
             svc.onAppCall(call)
             return
@@ -78,10 +78,10 @@ class NotifListener : NotificationListenerService() {
         val n = sbn.notification ?: return
         if ((n.flags and Notification.FLAG_GROUP_SUMMARY) != 0) return // e.g. "3 new messages" bundle
         if (n.category == Notification.CATEGORY_CALL) return // calls are handled separately
-        // Android keeps this listener running even when VGS is stopped. In that case the
+        // Android keeps this listener running even when CallCompanion is stopped. In that case the
         // notification is ignored without reading it, and the reason is logged only once.
         val svc = Hub.service
-        val why = if (svc == null) "VGS is stopped (press Start)" else svc.mirrorBlockReason()
+        val why = if (svc == null) "CallCompanion is stopped (press Start)" else svc.mirrorBlockReason()
         if (svc == null || why != null) {
             synchronized(lastSent) { lastSent.clear() }
             if (why != lastBlockReason) {
@@ -113,7 +113,7 @@ class NotifListener : NotificationListenerService() {
     }
 
     override fun onNotificationRemoved(sbn: StatusBarNotification) {
-        val svc = Hub.service ?: return // VGS stopped: nothing to clear on the remote
+        val svc = Hub.service ?: return // CallCompanion stopped: nothing to clear on the remote
         if (AppCalls.isCall(sbn)) {
             svc.onAppCallRemoved(sbn.key)
             return
