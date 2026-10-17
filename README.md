@@ -1,12 +1,12 @@
-# VGS
+# CallCompanion
 
-[![Latest release](https://img.shields.io/github/v/release/N2K02/VGS?label=download)](https://github.com/N2K02/VGS/releases/latest) ![Android 8.0+](https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/N2K02/CallCompanion?label=download)](https://github.com/N2K02/CallCompanion/releases/latest) ![Android 8.0+](https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Use an Android phone **without internet** like a smartwatch for a phone that **has a SIM / internet**, over Bluetooth.
 
 *Bluetooth phone companion app for Android: turn a spare phone into a smartwatch-style remote for SIM and WhatsApp calls.*
 
-**[⬇ Download the latest APK](https://github.com/N2K02/VGS/releases/latest)** · Android 8.0 or newer · Free and open source
+**[⬇ Download the latest APK](https://github.com/N2K02/CallCompanion/releases/latest)** · Android 8.0 or newer · Free and open source
 
 Install the same app on both phones and pick a role:
 
@@ -29,8 +29,8 @@ Install the same app on both phones and pick a role:
 
 ### WhatsApp setup (gateway)
 
-- Allow VGS in **Notification access** (same as notification sync).
-- Allow **Display over other apps** for VGS (button in the *WhatsApp calls* card), so it can open WhatsApp's call screen while running in the background.
+- Allow CallCompanion in **Notification access** (same as notification sync).
+- Allow **Display over other apps** for CallCompanion (button in the *WhatsApp calls* card), so it can open WhatsApp's call screen while running in the background.
 - To call someone on WhatsApp from the remote, they must be saved in the gateway's contacts and be on WhatsApp (open WhatsApp once so it syncs).
 
 ### Known limitation
@@ -39,14 +39,14 @@ Android does **not** let a normal app capture or inject the audio of a SIM call.
 
 ## Install & test
 
-1. Download `VGS-<version>.apk` (e.g. `VGS-1.0.apk`) from the latest **Release** of this repo and install it on **both** phones (allow "install unknown apps").
+1. Download `CallCompanion-<version>.apk` (e.g. `CallCompanion-1.0.apk`) from the latest **Release** of this repo and install it on **both** phones (allow "install unknown apps").
 2. Pair the two phones in Android **Settings → Bluetooth**.
-3. **Gateway phone:** open VGS → choose *Gateway* → **Start** → allow all permissions (Phone, Microphone, Nearby devices, Notifications, Contacts, Call logs).
-4. **Remote phone:** open VGS → choose *Remote* → pick the gateway phone from the list → **Start** → allow permissions.
+3. **Gateway phone:** open CallCompanion → choose *Gateway* → **Start** → allow all permissions (Phone, Microphone, Nearby devices, Notifications, Contacts, Call logs).
+4. **Remote phone:** open CallCompanion → choose *Remote* → pick the gateway phone from the list → **Start** → allow permissions.
 5. Status should turn green: *Connected to …*.
 6. Call the gateway's number from a third phone. The remote rings with Answer / Reject.
 
-Tip: on some phones (Xiaomi, Samsung, Huawei) set VGS battery usage to **Unrestricted** so it keeps running in the background.
+Tip: on some phones (Xiaomi, Samsung, Huawei) set CallCompanion battery usage to **Unrestricted** so it keeps running in the background.
 
 ## Updates
 
@@ -63,7 +63,7 @@ Releases are signed with a private key that is kept encrypted in `signing/keys.t
 
 ## Build
 
-Every push to `main` builds the APK with GitHub Actions and publishes it as a release named "VGS <version>" (1.0, 1.1, 1.2 …, one decimal place) with release notes listing the changes since the previous release. To jump to a new number (e.g. 2.0), run the workflow by hand from the Actions tab and type the version. Locally: `./gradlew assembleRelease` (shrunk APK) (needs JDK 17 + Android SDK).
+Every push to `main` builds the APK with GitHub Actions and publishes it as a release named "CallCompanion <version>" (1.0, 1.1, 1.2 …, one decimal place) with release notes listing the changes since the previous release. To jump to a new number (e.g. 2.0), run the workflow by hand from the Actions tab and type the version. Locally: `./gradlew assembleRelease` (shrunk APK) (needs JDK 17 + Android SDK).
 
 ## License
 
