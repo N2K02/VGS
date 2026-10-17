@@ -93,7 +93,7 @@ import androidx.compose.ui.unit.dp
 
 /** Pixel-style Material 3 Expressive theme: wallpaper colors + system light/dark mode. */
 @Composable
-fun VgsTheme(content: @Composable () -> Unit) {
+fun CallCompanionTheme(content: @Composable () -> Unit) {
     val dark = isSystemInDarkTheme()
     val ctx = LocalContext.current
     val scheme = when {
@@ -125,13 +125,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        AppUpdater.init(this, "N2K02/VGS", "VGS")
+        AppUpdater.init(this, "N2K02/CallCompanion", "CallCompanion")
         prefs = getSharedPreferences("vgs", MODE_PRIVATE)
         role = prefs.getString("role", LinkService.ROLE_REMOTE) ?: LinkService.ROLE_REMOTE
         selectedDevice = prefs.getString("device", null)
         mirrorOn = prefs.getBoolean("mirror", true)
         dialWhatsApp = prefs.getString("dial_via", "sim") == "wa"
-        setContent { VgsTheme { Screen() } }
+        setContent { CallCompanionTheme { Screen() } }
         requestPermissions(allPerms().toTypedArray(), 1)
         loadDevices()
         loadContacts()
@@ -273,11 +273,11 @@ class MainActivity : ComponentActivity() {
             modifier = Modifier.fillMaxSize().nestedScroll(FooterScroll.connection).nestedScroll(scroll.nestedScrollConnection),
             topBar = {
                 LargeTopAppBar(
-                    title = { Text("VGS", fontWeight = FontWeight.Bold) },
+                    title = { Text("CallCompanion", fontWeight = FontWeight.Bold) },
                     scrollBehavior = scroll
                 )
             },
-            bottomBar = { UpdateFooterBar("VGS") },
+            bottomBar = { UpdateFooterBar("CallCompanion") },
         ) { pad ->
             Column(
                 Modifier
@@ -648,13 +648,13 @@ class MainActivity : ComponentActivity() {
             }
             if (!enabled) {
                 Text(
-                    "Allow VGS in Notification access. If it's greyed out (\"Restricted setting\"): open App info → ⋮ (top right) → Allow restricted settings, then try again.",
+                    "Allow CallCompanion in Notification access. If it's greyed out (\"Restricted setting\"): open App info → ⋮ (top right) → Allow restricted settings, then try again.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             } else if (!bound) {
                 Text(
-                    "If this stays, turn VGS off and on again in Notification access.",
+                    "If this stays, turn CallCompanion off and on again in Notification access.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -692,7 +692,7 @@ class MainActivity : ComponentActivity() {
         SectionCard("WhatsApp calls") {
             Text(
                 "WhatsApp calls ring on the remote and can be answered, declined, hung up and started from there. " +
-                    "Needs Notification access (above) and \"Display over other apps\", so VGS can open WhatsApp's call screen in the background.",
+                    "Needs Notification access (above) and \"Display over other apps\", so CallCompanion can open WhatsApp's call screen in the background.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
