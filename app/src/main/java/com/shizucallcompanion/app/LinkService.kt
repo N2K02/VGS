@@ -836,7 +836,7 @@ class LinkService : Service() {
             return
         }
         val stamp = java.text.SimpleDateFormat("HH:mm:ss", java.util.Locale.US).format(java.util.Date())
-        mirrorPosted("vgs-test-$stamp", "ShizuCallCompanion", "Test notification", "Sent from the gateway at $stamp")
+        mirrorPosted("shizucallcompanion-test-$stamp", "ShizuCallCompanion", "Test notification", "Sent from the gateway at $stamp")
     }
 
     private fun encodeKey(k: String): String =

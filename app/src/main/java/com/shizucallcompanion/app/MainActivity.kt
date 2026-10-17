@@ -266,7 +266,7 @@ class MainActivity : ComponentActivity() {
         }
         l += Req(
             "Unrestricted battery",
-            "Stops Android from putting VGS to sleep, so the link stays up in the background",
+            "Stops Android from putting ShizuCallCompanion to sleep, so the link stays up in the background",
             getSystemService(android.os.PowerManager::class.java)?.isIgnoringBatteryOptimizations(packageName) == true,
             emptyList()
         ) { askBatteryExemption() }
@@ -290,9 +290,9 @@ class MainActivity : ComponentActivity() {
                 "Shizuku · cellular uplink injection",
                 when {
                     Build.VERSION.SDK_INT < 33 -> "Experimental call-audio injection requires Android 13 or newer on the gateway."
-                    shizukuReady -> "Granted. VGS can test experimental remote-microphone injection during a SIM call."
-                    shizukuAvailable -> "Allow VGS in Shizuku to enable experimental cellular-call uplink injection."
-                    else -> "Start the Shizuku server, then return here and grant VGS access. This is only needed for uplink injection."
+                    shizukuReady -> "Granted. ShizuCallCompanion can test experimental remote-microphone injection during a SIM call."
+                    shizukuAvailable -> "Allow ShizuCallCompanion in Shizuku to enable experimental cellular-call uplink injection."
+                    else -> "Start the Shizuku server, then return here and grant ShizuCallCompanion access. This is only needed for uplink injection."
                 },
                 shizukuReady, emptyList(), required = false
             ) { requestShizukuPermission() }
@@ -314,7 +314,7 @@ class MainActivity : ComponentActivity() {
         val launch = packageManager.getLaunchIntentForPackage("moe.shizuku.privileged.api")
         if (launch != null) {
             startActivity(launch)
-            toast("Start the Shizuku server, then return to VGS and tap Allow")
+            toast("Start the Shizuku server, then return to ShizuCallCompanion and tap Allow")
         } else {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://shizuku.rikka.app/")))
         }
@@ -420,7 +420,7 @@ class MainActivity : ComponentActivity() {
             modifier = Modifier.fillMaxSize(),
             topBar = {
                 TopAppBar(
-                    title = { Text("VGS remote", fontWeight = FontWeight.Bold) },
+                    title = { Text("ShizuCallCompanion · Remote", fontWeight = FontWeight.Bold) },
                     actions = { BackToSetupButton() }
                 )
             },
@@ -467,7 +467,7 @@ class MainActivity : ComponentActivity() {
             modifier = Modifier.fillMaxSize(),
             topBar = {
                 TopAppBar(
-                    title = { Text("VGS gateway", fontWeight = FontWeight.Bold) },
+                    title = { Text("ShizuCallCompanion · Gateway", fontWeight = FontWeight.Bold) },
                     actions = { BackToSetupButton() }
                 )
             },
@@ -539,7 +539,7 @@ class MainActivity : ComponentActivity() {
             modifier = Modifier.fillMaxSize().nestedScroll(scroll.nestedScrollConnection),
             topBar = {
                 LargeTopAppBar(
-                    title = { Text("VGS", fontWeight = FontWeight.Bold) },
+                    title = { Text("ShizuCallCompanion", fontWeight = FontWeight.Bold) },
                     scrollBehavior = scroll
                 )
             },
@@ -556,7 +556,7 @@ class MainActivity : ComponentActivity() {
                 SectionCard("1 · What is this phone?") {
                     if (running) {
                         Text(
-                            "VGS is running. Stop it first if you want to change the role.",
+                            "ShizuCallCompanion is running. Stop it first if you want to change the role.",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )

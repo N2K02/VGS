@@ -153,7 +153,7 @@ class UplinkInjectionService : IShizuUplinkInjectionService.Stub {
             downlinkWriteEnd = pipe[1]
             downlinkRunning = true
             val writerFd = pipe[1]
-            downlinkThread = Thread({ pumpDownlink(record, writerFd) }, "vgs-downlink-pcm").apply {
+            downlinkThread = Thread({ pumpDownlink(record, writerFd) }, "shizu-downlink-pcm").apply {
                 isDaemon = true
                 start()
             }
