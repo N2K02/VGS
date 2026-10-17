@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Window theme only; the screen itself is drawn by Compose with Material 3 Expressive. -->
-    <style name="Theme.VGS" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.CallCompanion" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
